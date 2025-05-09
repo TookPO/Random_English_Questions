@@ -26,7 +26,7 @@ devToggle.addEventListener('click', () => {
 
 // 테블릿 모드 버튼
 iphoneMode.addEventListener('click', () => {
-  window.location.href = 'OnlyForRandom.html';
+  window.location.href = 'index.html';
 });
 
 // CSV → raw 2D 배열
