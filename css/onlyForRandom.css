@@ -1,0 +1,191 @@
+/* css/onlyForRandom.css */
+
+body {
+  padding-top: 3rem; /* 버튼과 제목이 겹치지 않도록 상단 여백 추가 */
+}
+
+/* Theme Variables */
+:root {
+  --primary: #3498db;
+  --secondary: #2ecc71;
+  --bg-light: #f7f9fc;
+  --text-main: #333;
+  --text-muted: #555;
+  --h1-min: 1.5rem;
+  --h1-max: 2.5rem;
+  --h3-min: 1.25rem;
+  --h3-max: 1.75rem;
+}
+
+/* Base Styles */
+html {
+  font-size: 100%;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  margin: 0;
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+#wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: clamp(1rem, 5vw, 2rem);
+  font-size: clamp(var(--h1-min), 5vw, var(--h1-max));
+}
+
+input[type="file"],
+#show-data {
+  display: block;
+  margin: 0.5rem auto 1.5rem;
+  width: clamp(200px, 50%, 400px);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  padding: 0.5rem 1.5rem;
+}
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Developer Toggle */
+#dev-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+#iphone-mode {
+  position: fixed;
+  top: 10px;
+  left: 100px;
+  z-index: 999;
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+/* Hide/Show Utility */
+.hidden { display: none; }
+
+/* Group Card */
+#group-container section {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: clamp(1rem, 4vw, 1.5rem);
+  border: 1px solid #e2e8f0;
+}
+
+/* Group Header */
+.group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+.group-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: clamp(var(--h3-min), 4vw, var(--h3-max));
+}
+
+.group-header .answer-btn {
+  background-color: var(--secondary);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.9rem;
+}
+.group-header .answer-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Word List (always visible) */
+.word-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+.word-list span {
+  background: #eef6fd;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+/* Columns Header */
+.columns-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.columns-header span:first-child::before { content: '동의어'; }
+.columns-header span:last-child::before  { content: '표제어'; }
+
+/* Columns List */
+.columns-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #e2e8f0;
+}
+.columns-list li { display: contents; }
+.columns-list li span {
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  transition: background 0.2s;
+}
+.columns-list li span:hover { background: #f1f5f9; }
+
+/* Hide answer column by default */
+.columns-list span:nth-child(2) { visibility: hidden; }
+
+/* Show answer column when section has show-answers */
+section.show-answers .columns-list span:nth-child(2) { visibility: visible; }
+
+/* Responsive Layouts */
+@media (max-width: 768px) {
+  button, input[type="file"] { width: 100%; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  #wrapper { max-width: 720px; }
+}
+@media (min-width: 1025px) {
+  #wrapper { max-width: 900px; }
+}

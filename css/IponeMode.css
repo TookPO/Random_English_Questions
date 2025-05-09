@@ -1,0 +1,205 @@
+/* css/IponeMode.css */
+
+:root {
+  --primary: #3498db;
+  --secondary: #2ecc71;
+  --bg-light: #f9fbfd;
+  --text-main: #222;
+  --text-muted: #555;
+  --border: #dbe3ec;
+  --radius: 10px;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-main);
+  margin: 0;
+  padding: 1.2rem;
+}
+
+#wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 3rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* 버튼 스타일 */
+button {
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+#dev-toggle, #iphone-mode {
+  position: fixed;
+  top: 8px;
+  font-size: 0.8rem;
+  z-index: 999;
+  background: white;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.3rem 0.5rem;
+}
+
+#dev-toggle { left: 10px; }
+#iphone-mode { left: 100px; }
+
+#show-data {
+  background: var(--primary);
+  color: white;
+  margin: 0.5rem auto 1.5rem;
+  display: block;
+  width: 90%;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 0 auto 1rem;
+  width: 90%;
+}
+
+.hidden { display: none; }
+
+/* 그룹 카드 */
+#group-container section {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.group-header h3 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin: 0;
+}
+
+.group-header .answer-btn {
+  background: var(--secondary);
+  color: white;
+}
+
+.group-header .wordlist-btn {
+  background: white;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  margin-right: 0.5rem;
+}
+
+.columns-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.columns-header span:nth-child(1)::before { content: '번호'; }
+.columns-header span:nth-child(2)::before { content: '동의어'; }
+.columns-header span:nth-child(3)::before { content: '입력'; }
+
+.columns-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  border-top: 1px solid var(--border);
+}
+
+.columns-list li {
+  display: contents;
+}
+
+.columns-list li span,
+.columns-list li input {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.columns-list li input {
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.3rem;
+}
+
+.columns-list li span.answer {
+  visibility: hidden;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+section.show-answers .columns-list li span.answer {
+  visibility: visible;
+}
+
+/* 고정된 표제어 창 */
+#sticky-wordlist {
+  position: fixed;
+  top: 60px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--primary);
+  padding: 0.6rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: none;
+  z-index: 1000;
+  font-size: 0.85rem;
+  min-width: 120px;
+}
+
+#sticky-wordlist span {
+  display: block;
+  text-align: center;
+  color: var(--primary);
+  margin: 0.2rem 0;
+  font-weight: 600;
+}
+
+/* 미디어쿼리 (아이폰 14) */
+@media (max-width: 480px) {
+  #wrapper {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+  .group-header h3 {
+    font-size: 1rem;
+  }
+  .columns-header,
+  .columns-list {
+    font-size: 0.8rem;
+  }
+}
